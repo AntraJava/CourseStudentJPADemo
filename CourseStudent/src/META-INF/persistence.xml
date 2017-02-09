@@ -4,7 +4,9 @@
              version="2.0">
    <persistence-unit name="course_student_teacher_pu" transaction-type="RESOURCE_LOCAL">
    	  <provider>org.hibernate.ejb.HibernatePersistence</provider>
-      <class>net.antra.cs.domain</class>
+      <class>net.antra.cs.domain2.Course</class>
+      <class>net.antra.cs.domain2.Student</class>
+      <class>net.antra.cs.domain2.Teacher</class>
       <properties>
          <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="javax.persistence.jdbc.user" value="root"/>
