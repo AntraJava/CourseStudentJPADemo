@@ -24,7 +24,7 @@ public class TestApp {
 //		addCourse();
 //		addStudent();
 //		addCourseStudentAssoc();
-//		getCourse();
+		getCourse();
 //		queryJPQL();
 //		queryJPQL2();
 //		querySQL();
@@ -94,7 +94,7 @@ public class TestApp {
 	private static void getCourse() {
 		EntityManager em = EMF.createEntityManager();
 		em.getTransaction().begin();
-		Course course = em.find(Course.class, 15);
+		Course course = em.find(Course.class, 11);
 		course.setCredit(123);
 		em.getTransaction().commit();
 		em.close();
