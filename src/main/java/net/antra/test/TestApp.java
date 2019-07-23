@@ -20,11 +20,11 @@ public class TestApp {
 	
 	static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("course_student_teacher_pu");
 	public static void main(String[] args) {
-//		addTeacher();
+		addTeacher();
 //		addCourse();
 //		addStudent();
 //		addCourseStudentAssoc();
-		getCourse();
+//		getCourse();
 //		queryJPQL();
 //		queryJPQL2();
 //		querySQL();
@@ -43,7 +43,11 @@ public class TestApp {
 		course.setCredit(1);
 		course.setName("Math");
 		//set teacher to a coures
-		Teacher teacher = em.find(Teacher.class, 12);
+//		Teacher teacher = em.find(Teacher.class, 12);
+		Teacher teacher = new Teacher();
+//		teacher.setSeqId(12);
+		teacher.setAge(20);
+		teacher.setName("Robin");
 		course.setTeacher(teacher);
 		//em.persist(teacher); cascade type = all, no need to persist teacher first
 		em.persist(course);
@@ -57,8 +61,8 @@ public class TestApp {
 		em.getTransaction().begin();
 		//create a new teacher
 		Teacher teacher = new Teacher();
-		teacher.setAge(25);
-		teacher.setName("Rosie");
+		teacher.setAge(12);
+		teacher.setName("Daniel");
 		//em.persist(teacher); cascade type = all, no need to persist teacher first
 		em.persist(teacher);
 		em.flush();
@@ -94,16 +98,19 @@ public class TestApp {
 	private static void getCourse() {
 		EntityManager em = EMF.createEntityManager();
 		em.getTransaction().begin();
+		
 		Course course = em.find(Course.class, 11);
-		course.setCredit(123);
-		em.getTransaction().commit();
+		System.out.println(course.getTeacher().getName());
+
+		course.setName("Today is Jun 13");
+		em.getTransaction().commit(); 
 		em.close();
+
 	}
 	
 	private static void queryJPQL() {
 		EntityManager em = EMF.createEntityManager();
 		Query query = em.createQuery("select c from Course c where c.teacher.seqId = :teacherId", Course.class);
-		em.createNativeQuery("");
 		query.setParameter("teacherId", 12);
 		List<Course> list = query.getResultList();
 		

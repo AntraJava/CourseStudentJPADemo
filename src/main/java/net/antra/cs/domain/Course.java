@@ -29,7 +29,7 @@ public class Course implements Serializable{
 	private Teacher teacher;
 	private String inactiveInd = "N";
 	private Set<Student> students;
-//	private Set<CourseStudentAssoc> courseStudentAssoc;
+	private Set<CourseStudentAssoc> courseStudentAssoc;
 	public Course() {
 	}
 
@@ -68,7 +68,7 @@ public class Course implements Serializable{
 	public void setCredit(Integer credit) {
 		this.credit = credit;
 	}
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="teacher_id")
 	public Teacher getTeacher() {
 		return teacher;

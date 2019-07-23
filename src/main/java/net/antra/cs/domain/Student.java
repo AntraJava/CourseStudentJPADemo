@@ -21,7 +21,7 @@ public class Student implements Serializable{
 	private String name;
 	private String inactiveInd = "N";
 	private Set<Course> courses;
-	//private Set<CourseStudentAssoc> courseStudentAssoc;
+	private Set<CourseStudentAssoc> courseStudentAssoc;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "seq_id")
@@ -52,12 +52,12 @@ public class Student implements Serializable{
 	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
-//	@OneToMany(mappedBy="student")
-//	public Set<CourseStudentAssoc> getCourseStudentAssoc() {
-//		return courseStudentAssoc;
-//	}
-//	public void setCourseStudentAssoc(Set<CourseStudentAssoc> courseStudentAssoc) {
-//		this.courseStudentAssoc = courseStudentAssoc;
-//	}
+	@OneToMany(mappedBy="student")
+	public Set<CourseStudentAssoc> getCourseStudentAssoc() {
+		return courseStudentAssoc;
+	}
+	public void setCourseStudentAssoc(Set<CourseStudentAssoc> courseStudentAssoc) {
+		this.courseStudentAssoc = courseStudentAssoc;
+	}
 	
 }

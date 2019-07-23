@@ -14,7 +14,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="course_student_assoc")
 public class CourseStudentAssoc implements Serializable{
-	private static final long serialVersionUID = 1021536408115648328L;
+
+	private static final long serialVersionUID = 5196340810593428537L;
 	private Integer seqId;
 	private String inactiveInd = "N";
 	private Course course;
